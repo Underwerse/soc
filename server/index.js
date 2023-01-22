@@ -14,6 +14,9 @@ import { createPost } from './controllers/posts.js'
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/users.js'
 import postRoutes from './routes/posts.js'
+import User from './models/User.js'
+import Post from './models/Post.js'
+import { users, posts } from './data/index.js'
 
 /* Configurations */
 const __filename = fileURLToPath(import.meta.url)
@@ -59,4 +62,8 @@ mongoose.connect(MONGO_URL, {
   useUnifiedTopology: true,
 }).then(() => {
   app.listen(PORT, () => console.log(`Server started on port: ${PORT}`))
+
+  /* Add data one time */
+  // User.insertMany(users)
+  // Post.insertMany(posts)
 }).catch((error) => console.log(`Error: ${error}, server did not connect`))
