@@ -2,10 +2,11 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import User from '../models/User.js'
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
+
 /* Register user */
 export const register = async (req, res) => {
   try{
-    const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
 
     const {
       firstName,

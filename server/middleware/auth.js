@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
+
 export const verifyToken = async (req, res, next) => {
   try{
-    const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
     let token = req.header('Authorization')
 
     if (!token) {
