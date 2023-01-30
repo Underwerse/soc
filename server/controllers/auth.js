@@ -5,6 +5,8 @@ import User from '../models/User.js'
 /* Register user */
 export const register = async (req, res) => {
   try{
+    const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
+
     const {
       firstName,
       lastName,
@@ -52,7 +54,7 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password)
     if (!isMatch) return res.stTUS(400).JSON({ msg: 'Invalid credentials' })
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET)
+    const token = jwt.sign({ id: user.id }, JWT_SECRET)
     delete user.password
     res.status(200).json({ token, user })
   } catch(error) {

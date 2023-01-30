@@ -2,6 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const verifyToken = async (req, res, next) => {
   try{
+    const JWT_SECRET = process.env.JWT_SECRET || 'dfyguhjet8rg9786drutfgv43r786trufgvjhb'
     let token = req.header('Authorization')
 
     if (!token) {
@@ -12,7 +13,7 @@ export const verifyToken = async (req, res, next) => {
       token = token.slice(7, token.length).trimLeft()
     }
 
-    const verified = jwt.verify(token, process.env.JWT_SECRET)
+    const verified = jwt.verify(token, JWT_SECRET)
     req.user = verified
     next()
   } catch(error) {

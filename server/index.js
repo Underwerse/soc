@@ -53,8 +53,8 @@ app.use('/users', userRoutes)
 app.use('/posts', postRoutes)
 
 /* Mongoose setup */
-const PORT = process.env.PORT || 6001
-const MONGO_URL = process.env.MONGO_URL
+const PORT = process.env.PORT || 3001
+const MONGO_URL = process.env.MONGO_URL || 'mongodb+srv://user:user@cluster0.jwwqqfz.mongodb.net/?retryWrites=true&w=majority'
 mongoose.set('strictQuery', false)
 
 mongoose.connect(MONGO_URL, {
